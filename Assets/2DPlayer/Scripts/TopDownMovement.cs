@@ -1,16 +1,22 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TopDownMovement : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float walkSpeed = 5;
+    private Vector2 inputDir;
+    public void MoveInput(InputAction.CallbackContext context)
     {
-        
+        inputDir = context.ReadValue<Vector2>().normalized;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FixedUpdate()
     {
-        
+        Move();
+    }
+    private void Move()
+    {
+        transform.Translate(Vector2.up * inputDir.y * walkSpeed * Time.fixedDeltaTime);
+        transform.Translate(Vector2.right * inputDir.x * walkSpeed * Time.fixedDeltaTime);
     }
 }
