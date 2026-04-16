@@ -1,24 +1,25 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace ThreeDColider
+namespace TwoDCollison
 {
-    [RequireComponent(typeof(Rigidbody))]
-    public class OnCollisonEvent : MonoBehaviour
+    public class TriggerEvent : MonoBehaviour
     {
+
         [SerializeField] private string playerTag = "Player";
 
         [SerializeField] private UnityEvent OnEnter;
         [SerializeField] private UnityEvent OnExit;
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (!collision.gameObject.CompareTag(playerTag))
                 return;
 
             OnEnter?.Invoke();
         }
-        private void OnCollisionExit(Collision collision)
+
+        private void OnTriggerExit2D(Collider2D collision)
         {
             if (!collision.gameObject.CompareTag(playerTag))
                 return;
