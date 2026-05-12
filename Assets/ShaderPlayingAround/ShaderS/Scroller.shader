@@ -1,4 +1,4 @@
-Shader "Custom/Wawa"
+Shader "Custom/Scroller"
 {
     Properties
     {
@@ -42,12 +42,7 @@ Shader "Custom/Wawa"
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
-                
-                float3 pos = IN.positionOS.xyz;
-                
-                pos.y += abs(sin(_Time.y + (pos.z * 4) + pos.x * 4)) * 1.25f;
-
-                OUT.positionHCS = TransformObjectToHClip(pos);
+                OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
                 OUT.uv = TRANSFORM_TEX(IN.uv, _BaseMap);
                 return OUT;
             }
