@@ -13,7 +13,7 @@ namespace PacoUtility
         private bool isSprinting = false;
         [SerializeField] private float sprintSpeed = 12;
 
-        private Vector2 inputDir;
+        public Vector2 inputDir;
 
         public void Move(InputAction.CallbackContext context) =>
             inputDir = context.ReadValue<Vector2>().normalized;

@@ -10,9 +10,9 @@ namespace PacoUtility
         [SerializeField] private Rigidbody rb;
 
         [Header("Settings")]
+        public bool hasGravity = true;
+        public float gravity = 25;
         [SerializeField] private float Jumpforce = 10;
-        [SerializeField] private bool hasGravity = true;
-        [SerializeField] private float gravity = 25;
 
         [Header("Ground Check")]
         [SerializeField] private LayerMask groundLayer;
